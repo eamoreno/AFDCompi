@@ -16,7 +16,7 @@ namespace ERPolacaInversa
             foreach(var c in expresionRegular)
             //Parallel.ForEach(expresionRegular, c =>
             {
-                if (c != '#' && Form1.EsMetacaracter(c.ToString()))
+                if (c != '#' && EsMetacaracter(c))
                 {
                     var op1 = pila.Pop();
                     Nodo op2 = null;
@@ -56,6 +56,16 @@ namespace ERPolacaInversa
             op1.Padre = nodoOp;
             return nodoOp;
         }
+
+		public static bool EsMetacaracter(char dato)
+		{
+			bool bandera = false;
+
+			if (dato == '*' || dato == '+' || dato == '?' || dato == '.' || dato == ')' || dato == '(' || dato == '[' || dato == ']' || dato == '-' || dato == '|' || dato == '\\' || dato == '#')
+				bandera = true;
+
+			return bandera;
+		}
 
         public static bool EsUnario(char operador)
         {

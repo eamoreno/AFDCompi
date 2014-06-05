@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ERPolacaInversa/Form1.Designer.cs">
+    <Files>
+      <File FileName="ERPolacaInversa/AFD.cs" Line="1" Column="1" />
+      <File FileName="ERPolacaInversa/Form1.cs" Line="20" Column="3" />
+      <File FileName="ERPolacaInversa/Form1.Designer.cs" Line="262" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
