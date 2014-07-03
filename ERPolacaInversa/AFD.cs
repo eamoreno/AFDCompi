@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MoreLinq;
 
 namespace ERPolacaInversa
 {
@@ -23,6 +24,7 @@ namespace ERPolacaInversa
             GeneraPrimeraPos(_arbol);
             GeneraUltimaPos(_arbol);
             GeneraSiguientePos();
+            Genera();
         }
 
         public void EsNuleable(Nodo nodo)
@@ -184,5 +186,65 @@ namespace ERPolacaInversa
             return (operador == '+' || operador == '*' || operador == '?') ? true : false; 
         }
 
+        public void Genera()
+        {
+            
+            var A = _arbol.PrimeraPos;
+            var alfabeto = (from h in _nodos
+                            where h.GetType() == typeof(Hoja) && h.Id != '#'
+                            select h.Id).Distinct().ToArray();            
+
+            var hojasX = HojasX(A);            
+            var list = ObtenListaDeMultiplicaciones(alfabeto, hojasX);
+            var estadosSigPos = EstadosSigPos(list);
+            var nuevosEstados = ObtenNuevosEstados(estadosSigPos, A);
+
+            foreach (var nuevEstado in nuevosEstados)
+            {
+                hojasX = HojasX(nuevEstado);
+                list = ObtenListaDeMultiplicaciones(alfabeto, hojasX);
+                estadosSigPos = EstadosSigPos(list);
+                //nuevosEstados = ObtenNuevosEstados(estadosSigPos, nuevEstado);
+            }
+        }
+
+        private IEnumerable<int[]> EstadosSigPos(IEnumerable<int[]> list)
+        {
+            var estadosSigPos = list.Select(arr => (from h in _nodos
+                where h.GetType() == typeof (Hoja) && arr.Contains(((Hoja) h).Numero)
+                select ((Hoja) h).SigPos).SelectMany(x => x).
+                Distinct().OrderBy(x => x).ToArray()).ToList();
+            return estadosSigPos;
+        }
+
+        private static List<int[]> ObtenListaDeMultiplicaciones(char[] alfabeto, Hoja[] hojasA)
+        {
+            var list = alfabeto.Select(letra => (from e in hojasA
+                where e.Id == letra
+                select e.Numero).ToArray()).ToList();
+            return list;
+        }
+
+        private Hoja[] HojasX(int[] A)
+        {
+            var hojasA = (from h in _nodos
+                where h.GetType() == typeof (Hoja) && A.Contains(((Hoja) h).Numero)
+                select (Hoja) h).ToArray();
+            return hojasA;
+        }
+
+        private static List<int[]> ObtenNuevosEstados(IEnumerable<int[]> estados, IEnumerable<int> a)
+        {
+            var newEst = new List<int[]>();
+            var nuevosEstados = (from e in estados
+                where !e.SequenceEqual(a) && e.Count() > 0
+                select e).ToList();
+
+            foreach (var nE in nuevosEstados.Where(nE => !newEst.SequenceContains(nE)))
+            {
+                newEst.Add(nE);
+            }
+            return newEst;
+        }
     }
 }
