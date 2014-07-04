@@ -1,30 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MoreLinq;
 
-namespace ERPolacaInversa
+namespace ERPolacaInversa.Arbol
 {
-    public class AFD
+    public class Arbol
     {
         private readonly Nodo _arbol;
         private readonly List<Nodo> _nodos = new List<Nodo>();
 
-        public Nodo Arbol
+        public Nodo Cabeza
         {
             get { return _arbol; }
         }
 
-        public AFD(string expresionRegular)
+        public List<Nodo> GetNodos
+        {
+            get { return _nodos; }
+        }
+
+        public Arbol(string expresionRegular)
         {
             _arbol = GeneraArbol(expresionRegular);
             EsNuleable(_arbol);
             GeneraPrimeraPos(_arbol);
             GeneraUltimaPos(_arbol);
             GeneraSiguientePos();
-            Genera();
         }
 
         public void EsNuleable(Nodo nodo)

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using ERPolacaInversa.Properties;
+using ERPolacaInversa.AFD;
 
 namespace ERPolacaInversa
 {
@@ -35,7 +30,8 @@ namespace ERPolacaInversa
         {
             try
             {
-                AFD afd = new AFD(this.rTxtBPInversa.Text);                               
+                var arbol  = new Arbol.Arbol(this.rTxtBPInversa.Text);
+                var afd = new Afd(arbol);                
             }
             catch (Exception)
             {
@@ -45,3 +41,4 @@ namespace ERPolacaInversa
 
 	}
 }
+

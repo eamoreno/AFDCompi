@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ERPolacaInversa
+﻿namespace ERPolacaInversa.Arbol
 {
     /*Clase generada para crear los nodos del arbol*/
     public class Nodo
