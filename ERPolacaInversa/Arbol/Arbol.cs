@@ -188,23 +188,19 @@ namespace ERPolacaInversa
 
         public void Genera()
         {
-            
-            var A = _arbol.PrimeraPos;
             var alfabeto = (from h in _nodos
                             where h.GetType() == typeof(Hoja) && h.Id != '#'
                             select h.Id).Distinct().ToArray();            
-
-            var hojasX = HojasX(A);            
-            var list = ObtenListaDeMultiplicaciones(alfabeto, hojasX);
-            var estadosSigPos = EstadosSigPos(list);
-            var nuevosEstados = ObtenNuevosEstados(estadosSigPos, A);
-
-            foreach (var nuevEstado in nuevosEstados)
+            var i = 0;
+            var nuevosEstados = new List<int[]> { _arbol.PrimeraPos };
+            while (i < nuevosEstados.Count)
             {
-                hojasX = HojasX(nuevEstado);
-                list = ObtenListaDeMultiplicaciones(alfabeto, hojasX);
-                estadosSigPos = EstadosSigPos(list);
-                //nuevosEstados = ObtenNuevosEstados(estadosSigPos, nuevEstado);
+                var nuevoEstado = nuevosEstados[i];
+                var hojasX = HojasX(nuevoEstado);
+                var list = ObtenListaDeMultiplicaciones(alfabeto, hojasX);
+                var estadosSigPos = EstadosSigPos(list);
+                nuevosEstados = nuevosEstados.Union(ObtenNuevosEstados(estadosSigPos, nuevosEstados)).ToList();
+                i++;
             }
         }
 
@@ -217,7 +213,7 @@ namespace ERPolacaInversa
             return estadosSigPos;
         }
 
-        private static List<int[]> ObtenListaDeMultiplicaciones(char[] alfabeto, Hoja[] hojasA)
+        private static IEnumerable<int[]> ObtenListaDeMultiplicaciones(char[] alfabeto, Hoja[] hojasA)
         {
             var list = alfabeto.Select(letra => (from e in hojasA
                 where e.Id == letra
@@ -233,12 +229,12 @@ namespace ERPolacaInversa
             return hojasA;
         }
 
-        private static List<int[]> ObtenNuevosEstados(IEnumerable<int[]> estados, IEnumerable<int> a)
+        private static IEnumerable<int[]> ObtenNuevosEstados(IEnumerable<int[]> estadosSigPos, IEnumerable<int[]> estadosX)
         {
             var newEst = new List<int[]>();
-            var nuevosEstados = (from e in estados
-                where !e.SequenceEqual(a) && e.Count() > 0
-                select e).ToList();
+            var nuevosEstados = (from e in estadosSigPos
+                                 where !estadosX.SequenceContains(e) && e.Count() > 0
+                                 select e).ToList();
 
             foreach (var nE in nuevosEstados.Where(nE => !newEst.SequenceContains(nE)))
             {
