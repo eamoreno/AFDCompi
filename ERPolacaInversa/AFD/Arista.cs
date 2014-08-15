@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ERPolacaInversa.AFD
 {
-    class Arista
+    public class Arista
     {
         public char Id { get; set; }
+        public Nodo Nodo { get; set; }
     }
 }

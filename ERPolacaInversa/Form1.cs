@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using ERPolacaInversa.AFD;
+using ERPolacaInversa.Arbol;
+using Nodo = ERPolacaInversa.AFD.Nodo;
 
 namespace ERPolacaInversa
 {
 	public partial class Form1 : Form
-	{
-
+	{       
 		public Form1()
 		{
 			InitializeComponent();
@@ -27,10 +30,11 @@ namespace ERPolacaInversa
         }
 
         private void btnArbol_Click(object sender, EventArgs e)
-        {
+        {            
             try
             {
-                var arbol  = new Arbol.Arbol(this.rTxtBPInversa.Text);
+                var arbol  = new Arbol.Arbol(this.rTxtBPInversa.Text);                
+
                 var afd = new Afd(arbol);                
             }
             catch (Exception)
@@ -38,6 +42,8 @@ namespace ERPolacaInversa
                 MessageBox.Show("Error al generar arbol");
             }
         }
+
+        
 
 	}
 }
