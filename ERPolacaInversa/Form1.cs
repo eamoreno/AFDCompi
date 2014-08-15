@@ -34,17 +34,20 @@ namespace ERPolacaInversa
             try
             {
                 var arbol  = new Arbol.Arbol(this.rTxtBPInversa.Text);                
+                var afd = new Afd(arbol);
+                MuestraSigPos(arbol);
 
-                var afd = new Afd(arbol);                
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al generar arbol");
+                MessageBox.Show("Error al generar arbol", "Compiladores e Interpretes A", MessageBoxButtons.OK);
             }
         }
 
-        
-
+	    private void MuestraSigPos(Arbol.Arbol arbol)
+	    {
+	        
+	    }
 	}
 }
 

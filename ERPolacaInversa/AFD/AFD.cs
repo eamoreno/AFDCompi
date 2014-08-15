@@ -91,9 +91,15 @@ namespace ERPolacaInversa.AFD
 
         private void CreaNodos(IEnumerable<int[]> nuevosEstados, ICollection<Nodo> newEst)
         {
+            var terminador = (from h in _nodos
+                where h.GetType() == typeof (Hoja) && h.Id == '#'
+                select ((Hoja) h).Numero).FirstOrDefault();
+
             foreach (var nodo in nuevosEstados.Where(nE => !newEst.SequenceContains(nE)).
                 Select(nE => new Nodo {Arreglo = nE, Id = _id++, Type = NodoType.Estado, Aristas = new List<Arista>()}))
             {
+                if (nodo.Arreglo.Contains(terminador))
+                    nodo.Type = NodoType.Fin;
                 newEst.Add(nodo);
             }
         }
