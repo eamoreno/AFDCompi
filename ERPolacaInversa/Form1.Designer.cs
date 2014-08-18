@@ -52,7 +52,7 @@
             this.Aceptacionesgb = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.sigposgb = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dGVSigPos = new System.Windows.Forms.DataGridView();
             this.Hoja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SigPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtGVPruebas)).BeginInit();
@@ -60,7 +60,7 @@
             this.ArbolGB.SuspendLayout();
             this.Aceptacionesgb.SuspendLayout();
             this.sigposgb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSigPos)).BeginInit();
             this.SuspendLayout();
             // 
             // rTxtBNInfija
@@ -273,7 +273,7 @@
             // 
             // sigposgb
             // 
-            this.sigposgb.Controls.Add(this.dataGridView1);
+            this.sigposgb.Controls.Add(this.dGVSigPos);
             this.sigposgb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sigposgb.Location = new System.Drawing.Point(252, 247);
             this.sigposgb.Name = "sigposgb";
@@ -282,16 +282,16 @@
             this.sigposgb.TabStop = false;
             this.sigposgb.Text = "Sigpos";
             // 
-            // dataGridView1
+            // dGVSigPos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dGVSigPos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVSigPos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Hoja,
             this.SigPos});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 28);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(230, 207);
-            this.dataGridView1.TabIndex = 0;
+            this.dGVSigPos.Location = new System.Drawing.Point(6, 28);
+            this.dGVSigPos.Name = "dGVSigPos";
+            this.dGVSigPos.Size = new System.Drawing.Size(230, 207);
+            this.dGVSigPos.TabIndex = 0;
             // 
             // Hoja
             // 
@@ -335,7 +335,7 @@
             this.ArbolGB.ResumeLayout(false);
             this.Aceptacionesgb.ResumeLayout(false);
             this.sigposgb.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSigPos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,7 +367,7 @@
         private System.Windows.Forms.GroupBox Aceptacionesgb;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.GroupBox sigposgb;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dGVSigPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hoja;
         private System.Windows.Forms.DataGridViewTextBoxColumn SigPos;
     }

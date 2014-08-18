@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using ERPolacaInversa.AFD;
@@ -46,7 +48,28 @@ namespace ERPolacaInversa
 
 	    private void MuestraSigPos(Arbol.Arbol arbol)
 	    {
-	        
+            this.dGVSigPos.Rows.Clear();
+            this.dGVSigPos.DefaultCellStyle.Font = new Font("Tahoma", 11);
+	        int i = 0;
+
+            if (arbol != null)
+	        {
+                var hojas = (from h in arbol.GetNodos where h.GetType() == typeof(Hoja) select (Hoja)h).ToArray();
+	            foreach (var pos in hojas)
+	            {                    
+                    string agrega = "";	                                                
+	                for(int j = 0; j < pos.SigPos.Length; j++)
+	                {
+	                    if (j + 1 == pos.SigPos.Length)
+	                        agrega += pos.SigPos[j].ToString();
+                        else                                                                                                    
+                            agrega += pos.SigPos[j].ToString()  + " ,";
+	                }
+                    this.dGVSigPos.Rows.Add(pos.Numero.ToString(), agrega);	    
+                    /*this.dtGVPruebas.Rows[1].Cells[i].Value = pos.Numero.ToString();                    
+	                this.dGVSigPos.Rows[i].Cells[2].Value = agrega ;*/
+	            }
+	        }
 	    }
 	}
 }
