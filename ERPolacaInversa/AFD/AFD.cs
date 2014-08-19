@@ -1,24 +1,25 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ERPolacaInversa.Arbol;
 
 namespace ERPolacaInversa.AFD
 {
-    public class Afd
+    public class Afd : IEnumerable
     {
         char _id = 'B';
         private readonly Arbol.Nodo _arbol;
         private readonly List<Arbol.Nodo> _nodos = new List<Arbol.Nodo>();
+        private List<Nodo> _afd;
 
         public Afd(Arbol.Arbol arbol)
         {
             _arbol = arbol.Cabeza;
             _nodos = arbol.GetNodos;
-            Genera();
         }
-
-        private void Genera()
+        
+        public List<Nodo> GetGraph()
         {
             var alfabeto = (from h in _nodos
                             where h.GetType() == typeof(Hoja) && h.Id != '#'
@@ -35,6 +36,7 @@ namespace ERPolacaInversa.AFD
                 nuevosEstados = nuevosEstados.Union(ObtenNuevosEstados(estadosSigPos, nuevosEstados, i)).ToList();
                 i++;
             }
+            return nuevosEstados;
         }              
 
         private IEnumerable<int[]> EstadosSigPos(IEnumerable<int[]> list)
@@ -108,6 +110,11 @@ namespace ERPolacaInversa.AFD
         {
             var result = estadosX.FirstOrDefault(nodo => nodo.Arreglo.SequenceEqual(destino));
             return result;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -50,7 +50,7 @@
             this.ArbolGB = new System.Windows.Forms.GroupBox();
             this.btnArbol = new System.Windows.Forms.Button();
             this.Aceptacionesgb = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tVAceptaciones = new System.Windows.Forms.TreeView();
             this.sigposgb = new System.Windows.Forms.GroupBox();
             this.dGVSigPos = new System.Windows.Forms.DataGridView();
             this.Hoja = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -255,7 +255,7 @@
             // 
             // Aceptacionesgb
             // 
-            this.Aceptacionesgb.Controls.Add(this.treeView1);
+            this.Aceptacionesgb.Controls.Add(this.tVAceptaciones);
             this.Aceptacionesgb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aceptacionesgb.Location = new System.Drawing.Point(12, 247);
             this.Aceptacionesgb.Name = "Aceptacionesgb";
@@ -264,12 +264,12 @@
             this.Aceptacionesgb.TabStop = false;
             this.Aceptacionesgb.Text = "Aceptaciones";
             // 
-            // treeView1
+            // tVAceptaciones
             // 
-            this.treeView1.Location = new System.Drawing.Point(15, 28);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(196, 356);
-            this.treeView1.TabIndex = 0;
+            this.tVAceptaciones.Location = new System.Drawing.Point(15, 28);
+            this.tVAceptaciones.Name = "tVAceptaciones";
+            this.tVAceptaciones.Size = new System.Drawing.Size(196, 356);
+            this.tVAceptaciones.TabIndex = 0;
             // 
             // sigposgb
             // 
@@ -365,7 +365,7 @@
         private System.Windows.Forms.GroupBox ArbolGB;
         private System.Windows.Forms.Button btnArbol;
         private System.Windows.Forms.GroupBox Aceptacionesgb;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tVAceptaciones;
         private System.Windows.Forms.GroupBox sigposgb;
         private System.Windows.Forms.DataGridView dGVSigPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hoja;
