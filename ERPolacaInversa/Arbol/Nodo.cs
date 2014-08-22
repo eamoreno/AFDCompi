@@ -5,6 +5,7 @@
     {
         public char Id { get; set; }
         public bool EsAnulable { get; set; }
+        public bool visitado { get; set; }
 
         public Nodo Padre { get; set; }
         public Nodo Izquierdo { get; set; }
@@ -12,5 +13,8 @@
 
         public int[] PrimeraPos { get; set; }
         public int[] UltimaPos { get; set; }
+
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

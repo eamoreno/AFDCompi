@@ -16,6 +16,6 @@ namespace ERPolacaInversa.AFD
         public List<Arista> Aristas { get; set; } 
         public NodoType Type { get; set; }
         public int X { get; set; }
-        public int Y { get; set; }
+        public int Y { get; set; }        
     }
 }

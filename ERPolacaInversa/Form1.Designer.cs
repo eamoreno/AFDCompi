@@ -46,7 +46,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pBArbol = new System.Windows.Forms.PictureBox();
             this.ArbolGB = new System.Windows.Forms.GroupBox();
             this.btnArbol = new System.Windows.Forms.Button();
             this.Aceptacionesgb = new System.Windows.Forms.GroupBox();
@@ -55,8 +55,9 @@
             this.dGVSigPos = new System.Windows.Forms.DataGridView();
             this.Hoja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SigPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAFD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGVPruebas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBArbol)).BeginInit();
             this.ArbolGB.SuspendLayout();
             this.Aceptacionesgb.SuspendLayout();
             this.sigposgb.SuspendLayout();
@@ -126,7 +127,7 @@
             // 
             this.btnAbrir.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAbrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrir.Location = new System.Drawing.Point(274, 494);
+            this.btnAbrir.Location = new System.Drawing.Point(274, 626);
             this.btnAbrir.Name = "btnAbrir";
             this.btnAbrir.Size = new System.Drawing.Size(102, 28);
             this.btnAbrir.TabIndex = 6;
@@ -138,7 +139,7 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(392, 494);
+            this.btnGuardar.Location = new System.Drawing.Point(371, 626);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(102, 28);
             this.btnGuardar.TabIndex = 7;
@@ -166,7 +167,7 @@
             // 
             this.btnCargaP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCargaP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargaP.Location = new System.Drawing.Point(274, 567);
+            this.btnCargaP.Location = new System.Drawing.Point(274, 647);
             this.btnCargaP.Name = "btnCargaP";
             this.btnCargaP.Size = new System.Drawing.Size(231, 33);
             this.btnCargaP.TabIndex = 9;
@@ -178,7 +179,7 @@
             // 
             this.btnEjecutarP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEjecutarP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEjecutarP.Location = new System.Drawing.Point(274, 528);
+            this.btnEjecutarP.Location = new System.Drawing.Point(274, 621);
             this.btnEjecutarP.Name = "btnEjecutarP";
             this.btnEjecutarP.Size = new System.Drawing.Size(150, 33);
             this.btnEjecutarP.TabIndex = 10;
@@ -194,7 +195,7 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dtGVPruebas.Location = new System.Drawing.Point(274, 606);
+            this.dtGVPruebas.Location = new System.Drawing.Point(274, 596);
             this.dtGVPruebas.Name = "dtGVPruebas";
             this.dtGVPruebas.Size = new System.Drawing.Size(220, 84);
             this.dtGVPruebas.TabIndex = 11;
@@ -220,18 +221,18 @@
             this.Column3.HeaderText = "Estado de la Prueba";
             this.Column3.Name = "Column3";
             // 
-            // pictureBox1
+            // pBArbol
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(740, 576);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pBArbol.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pBArbol.Location = new System.Drawing.Point(6, 21);
+            this.pBArbol.Name = "pBArbol";
+            this.pBArbol.Size = new System.Drawing.Size(740, 576);
+            this.pBArbol.TabIndex = 12;
+            this.pBArbol.TabStop = false;
             // 
             // ArbolGB
             // 
-            this.ArbolGB.Controls.Add(this.pictureBox1);
+            this.ArbolGB.Controls.Add(this.pBArbol);
             this.ArbolGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArbolGB.Location = new System.Drawing.Point(511, 34);
             this.ArbolGB.Name = "ArbolGB";
@@ -306,12 +307,26 @@
             this.SigPos.Name = "SigPos";
             this.SigPos.Width = 135;
             // 
+            // btnAFD
+            // 
+            this.btnAFD.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAFD.Enabled = false;
+            this.btnAFD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAFD.Location = new System.Drawing.Point(274, 527);
+            this.btnAFD.Name = "btnAFD";
+            this.btnAFD.Size = new System.Drawing.Size(183, 38);
+            this.btnAFD.TabIndex = 17;
+            this.btnAFD.Text = "Muestra AFD";
+            this.btnAFD.UseVisualStyleBackColor = false;
+            this.btnAFD.Click += new System.EventHandler(this.btnAFD_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1284, 717);
+            this.Controls.Add(this.btnAFD);
             this.Controls.Add(this.sigposgb);
             this.Controls.Add(this.Aceptacionesgb);
             this.Controls.Add(this.btnArbol);
@@ -330,8 +345,9 @@
             this.Controls.Add(this.rTxtBNInfija);
             this.Name = "Form1";
             this.Text = "ER Polaca Inversa";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dtGVPruebas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBArbol)).EndInit();
             this.ArbolGB.ResumeLayout(false);
             this.Aceptacionesgb.ResumeLayout(false);
             this.sigposgb.ResumeLayout(false);
@@ -361,7 +377,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pBArbol;
         private System.Windows.Forms.GroupBox ArbolGB;
         private System.Windows.Forms.Button btnArbol;
         private System.Windows.Forms.GroupBox Aceptacionesgb;
@@ -370,6 +386,7 @@
         private System.Windows.Forms.DataGridView dGVSigPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hoja;
         private System.Windows.Forms.DataGridViewTextBoxColumn SigPos;
+        private System.Windows.Forms.Button btnAFD;
     }
 }
 
