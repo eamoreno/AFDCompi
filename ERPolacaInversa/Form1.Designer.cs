@@ -56,12 +56,14 @@
             this.Hoja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SigPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAFD = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dtGVPruebas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBArbol)).BeginInit();
             this.ArbolGB.SuspendLayout();
             this.Aceptacionesgb.SuspendLayout();
             this.sigposgb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSigPos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rTxtBNInfija
@@ -224,15 +226,17 @@
             // pBArbol
             // 
             this.pBArbol.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pBArbol.Location = new System.Drawing.Point(6, 21);
+            this.pBArbol.Location = new System.Drawing.Point(-38, 3);
             this.pBArbol.Name = "pBArbol";
-            this.pBArbol.Size = new System.Drawing.Size(740, 576);
+            this.pBArbol.Size = new System.Drawing.Size(870, 610);
+            this.pBArbol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pBArbol.TabIndex = 12;
             this.pBArbol.TabStop = false;
             // 
             // ArbolGB
             // 
-            this.ArbolGB.Controls.Add(this.pBArbol);
+            this.ArbolGB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ArbolGB.Controls.Add(this.panel1);
             this.ArbolGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArbolGB.Location = new System.Drawing.Point(511, 34);
             this.ArbolGB.Name = "ArbolGB";
@@ -256,11 +260,12 @@
             // 
             // Aceptacionesgb
             // 
+            this.Aceptacionesgb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Aceptacionesgb.Controls.Add(this.tVAceptaciones);
             this.Aceptacionesgb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aceptacionesgb.Location = new System.Drawing.Point(12, 247);
             this.Aceptacionesgb.Name = "Aceptacionesgb";
-            this.Aceptacionesgb.Size = new System.Drawing.Size(223, 407);
+            this.Aceptacionesgb.Size = new System.Drawing.Size(225, 458);
             this.Aceptacionesgb.TabIndex = 15;
             this.Aceptacionesgb.TabStop = false;
             this.Aceptacionesgb.Text = "Aceptaciones";
@@ -269,11 +274,12 @@
             // 
             this.tVAceptaciones.Location = new System.Drawing.Point(15, 28);
             this.tVAceptaciones.Name = "tVAceptaciones";
-            this.tVAceptaciones.Size = new System.Drawing.Size(196, 356);
+            this.tVAceptaciones.Size = new System.Drawing.Size(196, 405);
             this.tVAceptaciones.TabIndex = 0;
             // 
             // sigposgb
             // 
+            this.sigposgb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.sigposgb.Controls.Add(this.dGVSigPos);
             this.sigposgb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sigposgb.Location = new System.Drawing.Point(252, 247);
@@ -320,6 +326,15 @@
             this.btnAFD.UseVisualStyleBackColor = false;
             this.btnAFD.Click += new System.EventHandler(this.btnAFD_Click);
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.pBArbol);
+            this.panel1.Location = new System.Drawing.Point(6, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(746, 588);
+            this.panel1.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +367,7 @@
             this.Aceptacionesgb.ResumeLayout(false);
             this.sigposgb.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGVSigPos)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,6 +403,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Hoja;
         private System.Windows.Forms.DataGridViewTextBoxColumn SigPos;
         private System.Windows.Forms.Button btnAFD;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

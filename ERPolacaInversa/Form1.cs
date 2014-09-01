@@ -23,6 +23,8 @@ namespace ERPolacaInversa
         private Pen pincel = new Pen(Color.Blue, 2);
         private Pen lapiz = new Pen(Color.Cyan, 2);
 
+	    private List<Nodo> GrafoNodos;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -47,11 +49,13 @@ namespace ERPolacaInversa
             try
             {
                 var arbol  = new Arbol.Arbol(this.rTxtBPInversa.Text);                
-                var afd = new Afd(arbol);                            
+                var afd = new AFD.Afd(arbol);
+                GrafoNodos = afd.GetGraph();
+
                 MuestraSigPos(arbol);
-                PopulateTreeViewWithAfd(afd.GetGraph(), this.rTxtBPInversa.Text);
+                PopulateTreeViewWithAfd(GrafoNodos, this.rTxtBPInversa.Text);
                 LlenaArbol(arbol.Cabeza);
-                PintaAfd(afd.GetGraph());
+                //PintaAfd(afd.GetGraph());
                 this.btnAFD.Enabled = true;
             }
             catch (Exception)
@@ -80,7 +84,7 @@ namespace ERPolacaInversa
                 return;
             if (cabeza.Padre == null)
             {
-                cabeza.X = (pBArbol.Width / 2) + 35;
+                cabeza.X = (pBArbol.Width / 2) + 350;
                 cabeza.Y = 30;
                 cabeza.visitado = true;
             }
@@ -165,15 +169,6 @@ namespace ERPolacaInversa
 	        return cadena;
 	    }
 
-	    private void PintaAfd(List<Nodo> afd)
-	    {
-            //this.pictureB
-	       
-            //graphics.DrawEllipse(Pens.Blue,30,30,30,30);
-	    }
-
-	    
-
 	    private void PopulateTreeViewWithAfd(List<Nodo> afd, string erpi)
 	    {
             if (afd != null)
@@ -225,6 +220,7 @@ namespace ERPolacaInversa
         private void btnAFD_Click(object sender, EventArgs e)
         {
             FrmAFD pinta = new FrmAFD();
+            pinta.AfdNodos = GrafoNodos;
             pinta.ShowDialog();
         }
 	}
