@@ -28,9 +28,10 @@ namespace ERPolacaInversa
 
         private Font fuente = new Font("Arial", 18);
         private Font fuente2 = new Font("Arial", 11);
+        private Font fuente3 = new Font("Arial", 25);
         private Brush coloranul = new SolidBrush(Color.Black);
         private Brush colorprimpos = new SolidBrush(Color.Black);
-        private Brush colorultipos = new SolidBrush(Color.Purple);
+        private Brush colorultipos = new SolidBrush(Color.Yellow);
         private Brush colorbl = new SolidBrush(Color.White);
         private Brush relleno = new SolidBrush(Color.Chartreuse);
         private readonly Pen pincel = new Pen(Color.Blue, 2);
@@ -92,7 +93,10 @@ namespace ERPolacaInversa
             _plumaFlecha.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
             _plumaFlecha.CustomEndCap = finfle;
             int incurv = 0, inletr1 = 0, inletr2=0, inletr3=0, inletr4=0;
-            string letcurv = "", letra1 = "", letra2="", letra3="", letra4="";            ;
+            int inletr1r = 0, inletr2r = 0, inletr3r = 0, inletr4r = 0;  
+            string letcurv = "", letra1 = "", letra2="", letra3="", letra4="";
+            string letra1r = "", letra2r = "", letra3r = "", letra4r = "";
+            bool band1 = false, band2 = false, band3 = false, band4 = false;
             int tam = 0, tam2 = 0;
             int tamafue1=0, tamafue1a = 0;
             int tamafue2 = 0, tamafue2a = 0;
@@ -110,13 +114,33 @@ namespace ERPolacaInversa
                     //c hacia adelante y hacia arriba 
                     if (AfdNodos[i].X < AfdNodos[i].Aristas[j].Nodo.X && AfdNodos[i].Y > AfdNodos[i].Aristas[j].Nodo.Y)
                     {
-                        g.DrawLine(_plumaFlecha, AfdNodos[i].X + 20, AfdNodos[i].Y + 20,AfdNodos[i].Aristas[j].Nodo.X + 5, AfdNodos[i].Aristas[j].Nodo.Y + 30);
-                        if (letra1 == "")
-                            letra1 = AfdNodos[i].Aristas[j].Id.ToString();
+                        g.DrawLine(_plumaFlecha, AfdNodos[i].X + 20, AfdNodos[i].Y + 20, AfdNodos[i].Aristas[j].Nodo.X + 5, AfdNodos[i].Aristas[j].Nodo.Y + 30);
+
+                        if (AfdNodos[i].Id > AfdNodos[i].Aristas[j].Nodo.Id)
+                        {
+                            for (int m = 0; m < AfdNodos[i].Aristas[j].Nodo.Aristas.Count; m++)                            
+                                if(AfdNodos[i].Aristas[j].Nodo.Aristas[m].Nodo.Id == AfdNodos[i].Id)                            
+                                    band1 = true;                            
+                        }
+                        if (band1)
+                        {
+                            if (letra1r == "")
+                                letra1r = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra1r = letra1r + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr1r++;
+                            }
+                        }
                         else
                         {
-                            letra1 = letra1 + "," + AfdNodos[i].Aristas[j].Id.ToString();
-                            inletr1++;       
+                            if (letra1 == "")
+                                letra1 = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra1 = letra1 + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr1++;
+                            }
                         }
                         tamafue1 = tam;
                         tamafue1a = tam2;                                                
@@ -124,13 +148,32 @@ namespace ERPolacaInversa
                     //c hacia atras y hacia arriba
                     if (AfdNodos[i].X > AfdNodos[i].Aristas[j].Nodo.X && AfdNodos[i].Y > AfdNodos[i].Aristas[j].Nodo.Y)
                     {
-                        g.DrawLine(_plumaFlecha, AfdNodos[i].X + 20, AfdNodos[i].Y + 20,AfdNodos[i].Aristas[j].Nodo.X + 30, AfdNodos[i].Aristas[j].Nodo.Y + 30);
-                        if (letra2 == "")
-                            letra2 = AfdNodos[i].Aristas[j].Id.ToString();
+                        g.DrawLine(_plumaFlecha, AfdNodos[i].X + 20, AfdNodos[i].Y + 20, AfdNodos[i].Aristas[j].Nodo.X + 30, AfdNodos[i].Aristas[j].Nodo.Y + 30);
+                        if (AfdNodos[i].Id > AfdNodos[i].Aristas[j].Nodo.Id)
+                        {
+                            for (int m = 0; m < AfdNodos[i].Aristas[j].Nodo.Aristas.Count; m++)                            
+                                if(AfdNodos[i].Aristas[j].Nodo.Aristas[m].Nodo.Id == AfdNodos[i].Id)                                
+                                    band2 = true;                            
+                        }
+                        if (band2)
+                        {
+                            if (letra2r == "")
+                                letra2r = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra2r = letra2r + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr2r++;
+                            }
+                        }
                         else
                         {
-                            letra2 = letra2 + "," + AfdNodos[i].Aristas[j].Id.ToString();
-                            inletr2++;       
+                            if (letra2 == "")
+                                letra2 = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra2 = letra2 + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr2++;
+                            }
                         }
                         tamafue2 = tam;
                         tamafue2a = tam2;                                                                        
@@ -139,12 +182,31 @@ namespace ERPolacaInversa
                     if (AfdNodos[i].X < AfdNodos[i].Aristas[j].Nodo.X  && AfdNodos[i].Y < AfdNodos[i].Aristas[j].Nodo.Y)
                     {
                         g.DrawLine(_plumaFlecha, AfdNodos[i].X + 20, AfdNodos[i].Y + 20, AfdNodos[i].Aristas[j].Nodo.X + 5, AfdNodos[i].Aristas[j].Nodo.Y + 5);
-                        if (letra3 == "")
-                            letra3 = AfdNodos[i].Aristas[j].Id.ToString();
+                        if (AfdNodos[i].Id > AfdNodos[i].Aristas[j].Nodo.Id)
+                        {
+                            for (int m = 0; m < AfdNodos[i].Aristas[j].Nodo.Aristas.Count; m++)                            
+                                if(AfdNodos[i].Aristas[j].Nodo.Aristas[m].Nodo.Id == AfdNodos[i].Id)                            
+                                    band3 = true;                            
+                        }
+                        if (band3)
+                        {
+                            if (letra3r == "")
+                                letra3r = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra3r = letra3r + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr3r++;
+                            }
+                        }
                         else
                         {
-                            letra3 = letra3 + "," + AfdNodos[i].Aristas[j].Id.ToString();
-                            inletr3++;       
+                            if (letra3 == "")
+                                letra3 = AfdNodos[i].Aristas[j].Id.ToString();
+                            else
+                            {
+                                letra3 = letra3 + "," + AfdNodos[i].Aristas[j].Id.ToString();
+                                inletr3++;
+                            }
                         }
                         tamafue3 = tam;
                         tamafue3a = tam2;
@@ -205,18 +267,31 @@ namespace ERPolacaInversa
                             letcurv = letcurv + "," + AfdNodos[i].Aristas[j].Id.ToString();
                         incurv++;                        
                     }
-                }
-                if (incurv != 0)
-                {
-                    creaVuelta(AfdNodos[i], g, 1);
-                    g.DrawString(letcurv, fuente2, coloranul, AfdNodos[i].X - (curva * 2) - 10, AfdNodos[i].Y - 23);
-                }
-               
-                    g.DrawString(letra1, fuente2, colorprimpos, (int)(tamafue1 / 2), (int)(tamafue1a / 2) + 30);                                                
-                    g.DrawString(letra2, fuente2, colorprimpos, (int)(tamafue2 / 2), (int)(tamafue2a / 2) + 30);                                
-                    g.DrawString(letra3, fuente2, colorprimpos, (int)(tamafue3 / 2), (int)(tamafue3a / 2) + 30);                                
+
+                    if (incurv != 0)
+                    {
+                        creaVuelta(AfdNodos[i], g, 1);
+                        g.DrawString(letcurv, fuente2, coloranul, AfdNodos[i].X - (curva * 2) - 10, AfdNodos[i].Y - 23);
+                    }
+
+                    g.DrawString(letra1, fuente2, colorprimpos, (int)(tamafue1 / 2), (int)(tamafue1a / 2) + 30);
+                    g.DrawString(letra2, fuente2, colorprimpos, (int)(tamafue2 / 2), (int)(tamafue2a / 2) + 30);
+                    g.DrawString(letra3, fuente2, colorprimpos, (int)(tamafue3 / 2), (int)(tamafue3a / 2) + 30);
                     g.DrawString(letra4, fuente2, colorprimpos, (int)(tamafue4 / 2), (int)(tamafue4a / 2) + 30);
-                                
+                    if (band1)
+                        g.DrawString(letra1r, fuente2, colorprimpos, (int)(tamafue1 / 2), (int)(tamafue1a / 2) + 40);
+                    if (band2)
+                        g.DrawString(letra2r, fuente2, colorprimpos, (int)(tamafue2 / 2), (int)(tamafue2a / 2) + 40);
+                    if (band3)
+                        g.DrawString(letra3r, fuente2, colorprimpos, (int)(tamafue3 / 2), (int)(tamafue3a / 2) + 40);
+                    if (band4)
+                        g.DrawString(letra4r, fuente2, colorprimpos, (int)(tamafue4 / 2), (int)(tamafue4a / 2) + 40);                                                
+                }
+
+                band1 = false;
+                band2 = false;
+                band3 = false;
+                band4 = false;                
                 incurv = 0;
                 inletr2=0;
                 inletr1 = 0;
@@ -230,8 +305,8 @@ namespace ERPolacaInversa
 
                 dibuja(AfdNodos[i], g);
             }
-            _graphics.DrawRectangle(pincelbl, 20, 20, 36, 36);
-            _graphics.FillRectangle(colorbl, 20, 20, 35, 35);
+            _graphics.DrawRectangle(pincelbl, 20, 20, 51, 51);
+            _graphics.FillRectangle(colorbl, 20, 20, 50, 50);
         }
 
         private void HazFlechas(Nodo afdNodo, Nodo nodo)
@@ -298,7 +373,7 @@ namespace ERPolacaInversa
                 var arista = nodoIni.Aristas.FirstOrDefault(a => a.Id == t);
                 if (arista != null)
                 {
-                    if (nodoIni.Type == NodoType.Fin && text.Length == ind)
+                    if (arista.Nodo.Type == NodoType.Fin && text.Length == ind)
                     {
                         PintaArista(nodoIni, arista.Nodo, arista);
                         Thread.Sleep(dameSeg(Convert.ToInt32(txtTiempo.Text)));
@@ -308,13 +383,16 @@ namespace ERPolacaInversa
                         pBAfd.Refresh();
                         Thread.Sleep(dameSeg(Convert.ToInt32(txtTiempo.Text)));                        
                         break;
-                    }
+                    }                    
                     PintaArista(nodoIni, arista.Nodo, arista);         
                     nodoIni = arista.Nodo;
-                    ind++;
+                    ind++;                    
+                    if (text.Length == ind-1)
+                        MessageBox.Show("la Cadena no termino en un estado de aceptacion");
                     Thread.Sleep(dameSeg(Convert.ToInt32(txtTiempo.Text)));
                     PintaNodosAfd(_graphics);
                     PintaAristasAfd(_graphics);
+                    pBAfd.Refresh();
                 }
                 else
                 {
@@ -338,91 +416,45 @@ namespace ERPolacaInversa
             _plumaFlechaR.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
             _plumaFlechaR.CustomEndCap = finfle;
 
-            if ( nix < nfx && niy > nfy)            
-                _graphics.DrawLine(_plumaFlechaR,nix + 20, niy + 20, nfx +5, nfy +30);                                        
-            if (nix > nfx && niy > nfy)                            
-                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 30, nfy + 30);                                        
-            if (nix < nfx && niy < nfy)                            
-                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 5, nfy + 5);                                       
-            if (nix > nfx && niy < nfy)                            
-                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 30, nfy + 5);                                        
-            if (nix == nfx && nix > nfy)                            
-                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 15, nfy + 30);                            
-            if (nix == nfx && niy < nfy)                            
-                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 15, nfy + 30);                
+            if (nix < nfx && niy > nfy)                            
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 5, nfy + 30);            
+            if (nix > nfx && niy > nfy)
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 30, nfy + 30);           
+            if (nix < nfx && niy < nfy)                 
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 5, nfy + 5);            
+            if (nix > nfx && niy < nfy)
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 30, nfy + 5);            
+            if (nix == nfx && nix > nfy)
+               _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 15, nfy + 30);            
+            if (nix == nfx && niy < nfy)
+               _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 15, nfy + 30);
+            if (nix < nfx && niy == nfy)            
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx - 5, nfy + 15);                            
+            if (nix > nfx && niy == nfy)            
+                _graphics.DrawLine(_plumaFlechaR, nix + 20, niy + 20, nfx + 35, nfy + 15);                            
             if(nix == nfx && niy == nfy)
                 creaVuelta(nodoIni, _graphics,2);
 
-            _graphics.DrawRectangle(pincel, 20, 20, 36, 36);
-            _graphics.FillRectangle(colorultipos,20,20,35,35);
-            _graphics.DrawString(arista.Id.ToString(), fuente, coloranul, 25,25);
+            _graphics.DrawRectangle(pincel, 20, 20, 51, 51);
+            _graphics.FillRectangle(colorultipos,20,20,50,50);
+            _graphics.DrawString(arista.Id.ToString(), fuente3, coloranul, 25,25);
 
             pBAfd.Refresh();
         }
-
-        /*private void PintaAristas(Nodo nodoIni, Nodo nodoEnd)
-        {
-            int x0 = nodoEnd.X, x1 = nodoIni.X;
-            int y0 = nodoEnd.Y, y1 = nodoIni.Y;
-
-            bool steep = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
-            if (steep)
-            {
-                int t;
-                t = x0;
-                x0 = y0;
-                y0 = t;
-                t = x1;
-                x1 = y1;
-                y1 = t;
-            }
-
-            if (x0 > x1)
-            {
-                int t;
-                t = x0;
-                x0 = x1;
-                x1 = t;
-                t = y0;
-                y0 = y1;
-                y1 = t;
-            }
-
-            int dx = x1 - x0;
-            int dy = Math.Abs(y1 - y0);
-            int error = dx / 2;
-            int ystep = (y0 < y1) ? 1 : -1;
-            int y = y0;
-            for (int x = x0; x <= x1; x++)
-            {
-                var point  = new Point((steep ? y : x), (steep ? x : y));
-                _graphics.DrawRectangle(lapiz, point.X, point.Y, 2, 2);
-                error = error - dy;
-                if (error < 0)
-                {
-                    y += ystep;
-                    error += dx;
-                }
-                pBAfd.Image = dibujo;             
-                _graphics.DrawImage(dibujo, 0, 0);
-                pBAfd.Refresh();
-                
-            }                        
-        }*/
-
+       
         private int dameSeg(int tiempo)
         {
             int seg = 0;
             switch (tiempo)
             {
                 case 0 :
-                    seg = 200;
+                    seg = 300;
                     break;
                 case 1 :
-                    seg = 200;
+                    seg = 300;
                     break;
                 case 2:
-                    seg = 300;
+                    seg = 400;
                     break;
                 case 3:
                     seg = 400;
